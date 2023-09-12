@@ -10,5 +10,4 @@ export default StyleSheet.create({
         gap: 40,
         paddingBottom: 60
     }
-
 });

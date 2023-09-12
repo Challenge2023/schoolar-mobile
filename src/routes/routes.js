@@ -8,6 +8,7 @@ import Home from "../screens/home/index";
 import Content from "../screens/content/index";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Generated from "../screens/generated";
+import TestVisualizer from "../screens/generated/components/test";
 
 const Stack = createNativeStackNavigator();
 
@@ -48,6 +49,15 @@ export default function StackNavigator() {
           <Stack.Screen
             name="Generated"
             component={Generated}
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              cardOverlayEnabled: true,
+            }}
+          />
+          <Stack.Screen
+            name="TestVisualizer"
+            component={TestVisualizer}
             options={{
               headerShown: false,
               gestureEnabled: true,

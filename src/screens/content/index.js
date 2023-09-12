@@ -1,4 +1,4 @@
-import { KeyboardAvoidingView, Platform, Text, TextInput, View } from "react-native"
+import { KeyboardAvoidingView, Platform, View } from "react-native"
 import SafeArea from "../../components/safeArea";
 import UserInfo from "../../components/UserInfo";
 import global from "../../theme/global";
@@ -11,6 +11,9 @@ import TextArea from "../../components/textArea";
 import { useState } from "react";
 import Spinner from "react-native-loading-spinner-overlay";
 import { ScrollView } from "react-native";
+import { urlExam } from "../../services/api";
+import ToastManager, { Toast } from 'toastify-react-native'
+import { GenerateContent } from "../../integration";
 
 export default function Content({ route, navigation }) {
     const { userData } = route.params;
@@ -18,18 +21,30 @@ export default function Content({ route, navigation }) {
 
     const [formValues, setFormValues] = useState({
         theme: "",
-        questions: "",
-        subjects: "",
+        questionsNumber: "",
+        subject: "",
     });
 
-    const sendToAPI = () => {
+    const showToastsError = (e) => {
+        Toast.error('Erro:', e)
+    }
+
+    const sendToAPI = async () => {
         setLoading(true)
 
-        // finge que é a req
-        setInterval(() => {
-            setLoading(false)
-            navigation.navigate("Generated", { data: formValues });
-        }, 2000)
+        const convertedFormValues = {
+            ...formValues,
+            questionsNumber: parseInt(formValues.questionsNumber, 10),
+        };
+
+        const { data, err } = await GenerateContent(urlExam, convertedFormValues)
+        setLoading(false)
+
+        if (err != null) {
+            showToastsError(err)
+        } else {
+            navigation.navigate("Generated", { data: data, subject: convertedFormValues });
+        }
 
     }
 
@@ -42,7 +57,7 @@ export default function Content({ route, navigation }) {
 
     const isFormValid = () => {
         return (
-            formValues.theme !== "" && formValues.questions !== ""
+            formValues.theme !== "" && formValues.questionsNumber !== ""
         );
     };
 
@@ -52,6 +67,7 @@ export default function Content({ route, navigation }) {
                 <ScrollView style={global.container}>
                     <UserInfo userData={userData} />
                     <View style={global.containerContent}>
+                        <ToastManager />
                         <View style={style.containerForm}>
                             <View style={style.space}>
                                 <RegularText
@@ -80,10 +96,10 @@ export default function Content({ route, navigation }) {
                                 />
                                 <TextArea
                                     lines={1}
-                                    key="subjects"
+                                    key="subject"
                                     placeholder={"Digite aqui..."}
-                                    onChange={(text) => handleOnChange("subjects", text.nativeEvent.text)}
-                                    value={formValues.subjects}
+                                    onChange={(text) => handleOnChange("subject", text.nativeEvent.text)}
+                                    value={formValues.subject}
                                     keyboardType="default"
                                     multiline={false}
                                 />
@@ -97,10 +113,10 @@ export default function Content({ route, navigation }) {
                                 />
                                 <TextArea
                                     lines={1}
-                                    key="questions"
+                                    key="questionsNumber"
                                     placeholder={"Digite aqui..."}
-                                    onChange={(text) => handleOnChange("questions", text.nativeEvent.text)}
-                                    value={formValues.questions}
+                                    onChange={(text) => handleOnChange("questionsNumber", text.nativeEvent.text)}
+                                    value={formValues.questionsNumber}
                                     keyboardType="number-pad"
                                     multiline={false}
                                 />
