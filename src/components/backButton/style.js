@@ -2,8 +2,8 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   button: {
-    width: 50,
-    height: 50,
+    width: 45,
+    height: 45,
     display: "flex",
     alignItems: 'center',
     justifyContent: 'center',

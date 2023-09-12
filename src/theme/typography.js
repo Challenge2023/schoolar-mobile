@@ -8,6 +8,7 @@ const Size = {
         small: 20,
         medium: 24,
         large: 26,
+        xlarge: 36,
     }
 }
 

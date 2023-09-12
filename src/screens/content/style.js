@@ -9,5 +9,11 @@ export default StyleSheet.create({
         display: 'flex',
         gap: 40,
         paddingBottom: 60
-    }
+    },
+    containerHeader: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
 });

@@ -14,6 +14,7 @@ import { ScrollView } from "react-native";
 import { urlExam } from "../../services/api";
 import ToastManager, { Toast } from 'toastify-react-native'
 import { GenerateContent } from "../../integration";
+import BackButton from "../../components/backButton";
 
 export default function Content({ route, navigation }) {
     const { userData } = route.params;
@@ -70,7 +71,15 @@ export default function Content({ route, navigation }) {
         <SafeArea>
             <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
                 <ScrollView style={global.container}>
-                    <UserInfo userData={userData} />
+                    <View style={style.containerHeader}>
+                        <BackButton color={Colors.primary} iconColor={Colors.primary} action={() => navigation.goBack()} />
+                        <RegularText
+                            weight="SemiBold"
+                            color={Colors.primary}
+                            fontSize={Size.title.small}
+                            content={`Criação de Prova`}
+                        />
+                    </View>
                     <View style={global.containerContent}>
                         <ToastManager />
                         <View style={style.containerForm}>

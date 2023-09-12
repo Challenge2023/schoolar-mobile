@@ -1,13 +1,14 @@
 import { StyleSheet } from "react-native";
 import Colors from "../../theme/colors";
+import Size from "../../theme/typography";
 
 export default StyleSheet.create({
     textArea: {
         textAlignVertical: 'top',
-        padding: 10,
-        paddingTop: 10,
+        padding: 15,
+        paddingTop: 15,
         borderRadius: 5,
-        borderWidth: 1,
-        borderColor: Colors.primary
+        fontSize: Size.text.small,
+        backgroundColor: Colors.baseInput
     }
 });

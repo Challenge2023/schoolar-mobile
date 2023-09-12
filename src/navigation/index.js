@@ -4,8 +4,8 @@ import Colors from "../theme/colors";
 import Home from "../screens/home/index";
 import { createIconSetFromFontello } from "react-native-vector-icons";
 import { useNavigation, useTheme } from "@react-navigation/native";
-import Content from "../screens/content";
 import Size from "../theme/typography";
+import Management from "../screens/management";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -45,7 +45,7 @@ const NavBottom = ({ route }) => {
         }}
       />
 
-      <Tab.Screen name="Content" component={Content}
+      <Tab.Screen name="Management" component={Management}
         initialParams={{ userData }}
         options={{
           tabBarLabel: "Provas",

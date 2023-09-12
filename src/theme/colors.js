@@ -3,6 +3,7 @@ const Colors = {
     secondary: '#55AC68',
     white: '#FFFF',
     baseBackground: '#FCFCFC',
+    baseInput: '#FCFCFC',
     lightGrey: '#A3A3A3',
     darkGrey: '#202020',
     error: '#EA5345',

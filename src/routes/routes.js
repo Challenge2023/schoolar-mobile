@@ -9,6 +9,7 @@ import Content from "../screens/content/index";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Generated from "../screens/generated";
 import TestVisualizer from "../screens/generated/components/test";
+import Management from "../screens/management";
 
 const Stack = createNativeStackNavigator();
 
@@ -45,10 +46,27 @@ export default function StackNavigator() {
             }}
           />
           <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Content" component={Content} />
+          <Stack.Screen
+            name="Content"
+            component={Content}
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              cardOverlayEnabled: true,
+            }}
+          />
           <Stack.Screen
             name="Generated"
             component={Generated}
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              cardOverlayEnabled: true,
+            }}
+          />
+          <Stack.Screen
+            name="Management"
+            component={Management}
             options={{
               headerShown: false,
               gestureEnabled: true,
