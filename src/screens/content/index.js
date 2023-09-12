@@ -43,7 +43,12 @@ export default function Content({ route, navigation }) {
         if (err != null) {
             showToastsError(err)
         } else {
-            navigation.navigate("Generated", { data: data, subject: convertedFormValues });
+            setFormValues({
+                theme: "",
+                questionsNumber: "",
+                subject: "",
+            });
+            navigation.navigate("Generated", { data: data, subject: convertedFormValues, userData: userData });
         }
 
     }

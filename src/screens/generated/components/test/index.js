@@ -14,7 +14,7 @@ export default function TestVisualizer({ route, navigation }) {
         <SafeArea>
             <ScrollView style={global.container}>
                 <View style={style.container}>
-                    <BackButton color={Colors.baseBackground} iconColor={Colors.primary} action={() => navigation.goBack()} />
+                    <BackButton color={Colors.primary} iconColor={Colors.primary} action={() => navigation.goBack()} />
                     <RegularText
                         weight="SemiBold"
                         color={Colors.primary}

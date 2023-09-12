@@ -1,19 +1,19 @@
 import { View } from "react-native";
-import SafeArea from "../../components/safeArea";
-import RegularText from "../../components/texts";
-import Colors from "../../theme/colors";
-import global from "../../theme/global";
-import Size from "../../theme/typography";
-import Button from "../../components/button";
+import SafeArea from "../../../components/safeArea";
+import RegularText from "../../../components/texts";
+import Colors from "../../../theme/colors";
+import global from "../../../theme/global";
+import Size from "../../../theme/typography";
+import Button from "../../../components/button";
 import { useState } from "react";
 import * as Print from 'expo-print';
 import { shareAsync } from 'expo-sharing';
-import BackButton from "../../components/backButton";
-import style from "./style";
-import TestInfo from "./components/testInfo";
+import BackButton from "../../../components/backButton";
+import style from "../style";
+import TestInfo from "./testInfo";
 
 export default function Generated({ route, navigation }) {
-    const { data, subject, userData } = route.params;
+    const { data, subject } = route.params;
 
     const generateHTMLTemplate = (questions) => {
         let html = `
@@ -75,7 +75,8 @@ export default function Generated({ route, navigation }) {
     };
 
     const goToHome = () => {
-        navigation.navigate("Navigation", { userData: userData });
+
+        navigation.navigate("Home", { userData: userJSON });
     }
 
     const htmlTemplate = generateHTMLTemplate(data);
@@ -115,7 +116,7 @@ export default function Generated({ route, navigation }) {
                         content={'Prova gerada'}
                         align="center"
                     />
-                    <BackButton color={Colors.primary} iconColor={Colors.primary} action={() => goToHome()} close={true} />
+                    <BackButton color={Colors.primary} iconColor={Colors.primary} action={() => navigation.goBack()} close={true} />
                 </View>
                 <View style={global.containerContent}>
                     <View style={style.containerVisualizer}>
