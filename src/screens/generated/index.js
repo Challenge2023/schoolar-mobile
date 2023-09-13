@@ -85,6 +85,10 @@ export default function Generated({ route, navigation }) {
         await shareAsync(uri, { UTI: '.pdf', mimeType: 'application/pdf' });
     };
 
+    const seeHistoric = () => {
+        navigation.navigate("Historic");
+    }
+
     const visualizerTest = () => {
         navigation.navigate("TestVisualizer", { data: data, subject: subject });
     }
@@ -148,7 +152,7 @@ export default function Generated({ route, navigation }) {
                             color={Colors.primary}
                         />
                         <Button
-                            action={printToFile}
+                            action={seeHistoric}
                             text="Ver Todas Provas"
                             color={Colors.inputBackground}
                             dark={true}

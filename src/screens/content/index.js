@@ -15,6 +15,7 @@ import { urlExam } from "../../services/api";
 import ToastManager, { Toast } from 'toastify-react-native'
 import { GenerateContent } from "../../integration";
 import BackButton from "../../components/backButton";
+import { SetData } from "../../context/data"
 
 export default function Content({ route, navigation }) {
     const { userData } = route.params;
@@ -44,6 +45,8 @@ export default function Content({ route, navigation }) {
         if (err != null) {
             showToastsError(err)
         } else {
+            SetData("exam", convertedFormValues)
+
             setFormValues({
                 theme: "",
                 questionsNumber: "",

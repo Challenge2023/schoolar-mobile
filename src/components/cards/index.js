@@ -33,9 +33,6 @@ export default function Cards({ route, navigation, title, desc, path, icon, user
                         content={desc}
                     />
                 </View>
-                <View>
-                    <CustomIcon name={icon} color={Colors.primary} size={Size.title.large} />
-                </View>
             </View>
         </TouchableOpacity>
     )
