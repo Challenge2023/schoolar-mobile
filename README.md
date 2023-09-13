@@ -14,7 +14,7 @@ Este repositório contém o código-fonte e a documentação relacionados ao mob
 4. Inicie o aplicativo com Expo: expo start
 5. Siga as instruções exibidas no terminal para abrir o aplicativo em um dispositivo físico ou emulador.
 
-## Funcionalidades do Frontend
+## Funcionalidades do Mobile
 O frontend da plataforma Schoolar oferece uma ampla gama de funcionalidades para alunos e professores, com o objetivo de aprimorar o processo de ensino e aprendizagem:
 
 - **Interface Intuitiva**: A Schoolar proporciona uma interface de usuário amigável e intuitiva, garantindo uma navegação simples e acessível para alunos e professores de todos os níveis educacionais.
