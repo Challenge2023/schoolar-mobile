@@ -1,6 +1,6 @@
-# Schoolar Frontend (React Native)
+# Schoolar Mobile (React Native)
 
-Este repositório contém o código-fonte e a documentação relacionados ao frontend da plataforma Schoolar, desenvolvido em React Native.
+Este repositório contém o código-fonte e a documentação relacionados ao mobile da plataforma Schoolar, desenvolvido em React Native.
 
 ## Pré-requisitos
 - Node.js
