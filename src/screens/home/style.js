@@ -34,6 +34,9 @@ export default StyleSheet.create({
     containerCard: {
         display: 'flex',
         flexDirection: 'row'
+    },
+    containerCards: {
+        display: 'flex',
+        gap: 20
     }
-
 });

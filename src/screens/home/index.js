@@ -7,9 +7,25 @@ import RegularText from "../../components/texts";
 import Colors from "../../theme/colors";
 import Size from "../../theme/typography";
 import Button from "../../components/button";
+import Cards from "../../components/cards";
 
 export default function Home({ route, navigation }) {
     const { userData } = route.params;
+
+    const cardsData = [
+        {
+            title: 'Lista de Alunos',
+            desc: 'Veja em tempo real a lista dos alunos.',
+            path: 'StudentList',
+            icon: 'go-back'
+        },
+        {
+            title: 'Cadastro de Alunos',
+            desc: 'Cadastre alunos novos de forma simples.',
+            path: 'StudentsRegister',
+            icon: 'go-back'
+        },
+    ]
 
     return (
         <SafeArea>
@@ -37,8 +53,13 @@ export default function Home({ route, navigation }) {
                         </View>
                     </View>
 
-                    <Image source={require('../../../assets/images/charts.jpg')} style={style.imageFull} />
-
+                    <View>
+                        <View style={style.containerCards}>
+                            {cardsData.map((data, index) => (
+                                <Cards title={data.title} desc={data.desc} path={data.path} key={index} icon={data.icon} userData={userData} navigation={navigation} />
+                            ))}
+                        </View>
+                    </View>
                 </View>
             </ScrollView>
         </SafeArea>

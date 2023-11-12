@@ -11,6 +11,8 @@ import Generated from "../screens/generated";
 import TestVisualizer from "../screens/generated/components/test";
 import Management from "../screens/management";
 import Historic from "../screens/historic";
+import StudentList from "../screens/studentsList";
+import StudentsRegister from "../screens/students";
 
 const Stack = createNativeStackNavigator();
 
@@ -50,6 +52,24 @@ export default function StackNavigator() {
           <Stack.Screen
             name="Content"
             component={Content}
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              cardOverlayEnabled: true,
+            }}
+          />
+          <Stack.Screen
+            name="StudentList"
+            component={StudentList}
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              cardOverlayEnabled: true,
+            }}
+          />
+          <Stack.Screen
+            name="StudentsRegister"
+            component={StudentsRegister}
             options={{
               headerShown: false,
               gestureEnabled: true,

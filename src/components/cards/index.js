@@ -12,7 +12,6 @@ export default function Cards({ route, navigation, title, desc, path, icon, user
     );
 
     const goToPage = () => {
-        console.log(path)
         navigation.navigate(path, { userData: userData });
     }
 

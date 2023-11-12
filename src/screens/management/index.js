@@ -15,18 +15,6 @@ export default function Management({ route, navigation }) {
             path: 'Content',
             icon: 'go-back'
         },
-        {
-            title: 'Histórico de Provas',
-            desc: 'Veja de forma eficiente todas as suas provas geradas.',
-            path: 'Historic',
-            icon: 'go-back'
-        },
-        {
-            title: 'Correção de Provas',
-            desc: 'Corriga provas de forma mais rápida e eficiente.',
-            path: 'Correction',
-            icon: 'go-back'
-        }
     ]
 
     return (
