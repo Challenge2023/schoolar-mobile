@@ -57,8 +57,8 @@ export default function Login({ navigation }) {
 
   const formItems = [
     {
-      label: "E-mail corporativo",
-      placeholder: "Digite seu usuário",
+      label: "E-mail",
+      placeholder: "Digite seu e-mail",
       value: "",
       handleUsernameChange: handleUsernameChange,
       username: username,
@@ -89,11 +89,16 @@ export default function Login({ navigation }) {
             Login
           </Text>
           <LoginForm formItems={formItems} />
-          <View style={{ width: "70%", alignSelf: "center" }}>
+          <View style={{ width: "100%", alignSelf: "center", display: "flex", gap: 10 }}>
             <Button
               action={() => VerifyUser()}
               text="Entrar"
               color={Colors.primary}
+            />
+            <Button
+              action={() => navigation.navigate("SignUp")}
+              text="Cadastrar"
+              dark={true}
             />
           </View>
         </View>

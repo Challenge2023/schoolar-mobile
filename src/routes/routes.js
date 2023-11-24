@@ -13,6 +13,7 @@ import Management from "../screens/management";
 import Historic from "../screens/historic";
 import StudentList from "../screens/studentsList";
 import StudentsRegister from "../screens/students";
+import SignUp from "../screens/signUp";
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,15 @@ export default function StackNavigator() {
           <Stack.Screen
             name="Login"
             component={Login}
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              cardOverlayEnabled: true,
+            }}
+          />
+          <Stack.Screen
+            name="SignUp"
+            component={SignUp}
             options={{
               headerShown: false,
               gestureEnabled: true,
