@@ -18,19 +18,11 @@ const NavBottom = ({ route }) => {
   function ExitButton() {
     const navigation = useNavigation();
 
-    const handleExitPress = () => {
+    return (
       navigation.reset({
         index: 0,
         routes: [{ name: 'Login' }],
-      });
-    };
-
-    return (
-      <Button
-        title="Sair"
-        onPress={handleExitPress}
-      // Adicione outros estilos ou props conforme necessário
-      />
+      })
     );
   }
 
@@ -46,20 +38,10 @@ const NavBottom = ({ route }) => {
         paddingTop: "1%",
       }}
     >
-      <Tab.Screen name="Home" component={Home}
-        initialParams={{ userData }}
-        options={{
-          tabBarLabel: "Home",
-          tabBarIcon: ({ color }) => (
-            <CustomIcon name="home" color={color} size={24} />
-          ),
-        }}
-      />
-
       <Tab.Screen name="Classes" component={Grades}
         initialParams={{ userData }}
         options={{
-          tabBarLabel: "Boletim",
+          tabBarLabel: "Prontuário",
           tabBarIcon: ({ color }) => (
             <CustomIcon name="grades" color={color} size={24} />
           ),

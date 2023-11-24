@@ -13,9 +13,11 @@ export default function LoginForm({ formItems }) {
           <TextInput
             style={styles.input}
             placeholder={item.placeholder}
-            value={item.label === 'E-mail corporativo' ? item.username : item.password}
-            onChangeText={item.label === 'E-mail corporativo' ? item.handleUsernameChange : item.handlePasswordChange}
-            secureTextEntry={item.label !== 'E-mail corporativo'}
+            value={item.set}
+            onChangeText={item.handleChange}
+            secureTextEntry={item.label === 'Senha'}
+            keyboardType={item.label === 'Token' ? 'number-pad' : 'default'}
+            returnKeyType='done'
           />
         </View>
       ))}

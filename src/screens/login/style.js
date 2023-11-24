@@ -19,4 +19,11 @@ export default StyleSheet.create({
     paddingBottom: 50,
     marginTop: '15%'
   },
+  accountContainer: {
+    bottom: 0,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingBottom: 50
+  },
 });

@@ -7,23 +7,33 @@ import { SvgXml } from "react-native-svg";
 import LoginForm from "../../components/loginform";
 import Svgs from "../../../assets/images/svgs";
 import { useState } from "react";
+import RegularText from "../../components/texts";
+import { Pressable } from "react-native";
+import { useEffect } from "react";
 
 export default function Login({ navigation }) {
   const Logo = Svgs.xml;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [token, setToken] = useState("");
+  const [isDoctor, setIsDoctor] = useState(false);
 
-  //FINGINDO ESTAR TRAZENDO DO BANCO
   const users = [
     {
       username: "lucas",
       password: "12345",
-      title: "student",
+      title: "pacient",
     },
     {
-      username: "gabriel",
+      username: "caio",
       password: "12345",
-      title: "teacher",
+      title: "doctor",
+      token: token,
+      pacient: {
+        name: 'Lucas Amadeu',
+        birthday: '14/04/2004',
+        cpf: '640.290.178-51'
+      }
     },
   ];
 
@@ -36,15 +46,14 @@ export default function Login({ navigation }) {
 
     if (foundUser) {
       const userJSON = JSON.stringify(foundUser);
-      if (foundUser.title == "teacher") {
-        navigation.navigate("Navigation", { userData: userJSON });
+      if (foundUser.title == "doctor") {
+        navigation.navigate("Content", { userData: userJSON });
       } else {
         navigation.navigate("NavigationStudent", { userData: userJSON });
       }
     } else {
       console.log("Usuário ou senha incorretos.");
     }
-
   };
 
   const handleUsernameChange = (text) => {
@@ -55,20 +64,54 @@ export default function Login({ navigation }) {
     setPassword(text);
   };
 
+  const handleTokenChange = (text) => {
+    setToken(text);
+  };
+
+  useEffect(() => {
+    setUsername('')
+    setPassword('')
+    setToken('')
+  }, [isDoctor])
+
   const formItems = [
     {
-      label: "E-mail",
-      placeholder: "Digite seu e-mail",
+      label: "Usuário",
+      placeholder: "Digite seu usuário",
       value: "",
-      handleUsernameChange: handleUsernameChange,
-      username: username,
+      handleChange: handleUsernameChange,
+      set: username,
     },
     {
       label: "Senha",
       placeholder: "Digite sua senha",
       value: "",
-      handlePasswordChange: handlePasswordChange,
-      password: password,
+      handleChange: handlePasswordChange,
+      set: password,
+    },
+  ];
+
+  const formItemsDoctor = [
+    {
+      label: "Usuário",
+      placeholder: "Digite seu usuário",
+      value: "",
+      handleChange: handleUsernameChange,
+      set: username,
+    },
+    {
+      label: "Senha",
+      placeholder: "Digite sua senha",
+      value: "",
+      handleChange: handlePasswordChange,
+      set: password,
+    },
+    {
+      label: "Token",
+      placeholder: "Digite o token",
+      value: "",
+      handleChange: handleTokenChange,
+      set: token,
     },
   ];
 
@@ -81,14 +124,14 @@ export default function Login({ navigation }) {
             style={{
               textAlign: "center",
               fontFamily: "Poppins-Medium",
-              fontSize: 24,
+              fontSize: 16,
               color: Colors.textDark,
               marginBottom: 20,
             }}
           >
-            Login
+            Login - {isDoctor ? 'Médico' : 'Paciente'}
           </Text>
-          <LoginForm formItems={formItems} />
+          <LoginForm formItems={isDoctor ? formItemsDoctor : formItems} />
           <View style={{ width: "100%", alignSelf: "center", display: "flex", gap: 10 }}>
             <Button
               action={() => VerifyUser()}
@@ -100,6 +143,11 @@ export default function Login({ navigation }) {
               text="Cadastrar"
               dark={true}
             />
+            <Pressable onPress={() => setIsDoctor(!isDoctor)} style={styles.accountContainer}>
+              <RegularText weight='Regular' color={Colors.textLight} fontSize={12} content={"Faça Login"} />
+              <View style={{ padding: 2 }}></View>
+              <RegularText weight='Medium' color={Colors.primary} fontSize={12} content={isDoctor ? 'como Paciente' : 'como Médico'} />
+            </Pressable>
           </View>
         </View>
       </View>
